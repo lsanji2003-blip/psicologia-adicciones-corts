@@ -120,7 +120,7 @@
           <TituloSeccion
             sobretitulo="El gabinete"
             titulo="Un espacio pensado para que te sientas en calma"
-            texto="90 m² a pie de calle, con mucha luz natural, madera y plantas. Las primeras imágenes recrean cómo quedará el gabinete amueblado; las demás muestran el local en su estado actual. Pulsa cualquiera para verla en grande."
+            texto="90 m² a pie de calle, con mucha luz natural, madera y plantas. Las imágenes recrean cómo quedará el gabinete amueblado y decorado. Pulsa cualquiera para verla en grande."
           />
           <div className="gabinete-galeria">
             {fotos.map((f, i) => (

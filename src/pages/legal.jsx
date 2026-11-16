@@ -138,7 +138,7 @@
         id: "al-propiedad", titulo: "Propiedad intelectual",
         contenido: (
           <React.Fragment>
-            <p>Los textos, el diseño y el código de este sitio pertenecen a sus autores. Las fotografías de ambiente proceden de Unsplash y las imágenes del local, de un anuncio inmobiliario; se utilizan únicamente con fines académicos.</p>
+            <p>Los textos, el diseño y el código de este sitio pertenecen a sus autores. Las fotografías de ambiente proceden de Unsplash y las imágenes del gabinete son recreaciones generadas con inteligencia artificial; se utilizan únicamente con fines académicos.</p>
             <p>No se permite la reproducción con fines comerciales sin autorización.</p>
           </React.Fragment>
         )
