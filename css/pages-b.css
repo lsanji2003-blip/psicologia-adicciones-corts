@@ -354,3 +354,18 @@
 @media (max-width: 480px) {
   .cont-barra { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- Contenidos: estrategia (objetivos, plataformas, medicion) ---------- */
+.cont-objetivo { position: relative; }
+.cont-objetivo__num { font-family: var(--fuente-titulos); font-size: 2.2rem; line-height: 1; color: var(--color-acento-texto); display: block; margin-bottom: .6rem; }
+.cont-objetivo__medicion { font-size: .9rem; margin: 0; padding-top: .9rem; border-top: 1px solid var(--color-borde); }
+.cont-plataformas { margin-top: 3rem; }
+.cont-plataformas__titulo { font-size: 1.5rem; }
+.cont-plataformas__tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+.cont-plataformas__panel { animation: cont-plat-entra .4s ease both; }
+.cont-plataformas__panel dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1.25rem 2rem; }
+.cont-plataformas__panel dt { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-acento-texto); margin-bottom: .35rem; }
+.cont-plataformas__panel dd { margin: 0; }
+@keyframes cont-plat-entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.cont-fuentes { margin-top: 2.5rem; font-size: .85rem; }
+.cont-fuentes li { margin-bottom: .4rem; padding-left: 1.2rem; text-indent: -1.2rem; }
