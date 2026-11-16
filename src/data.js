@@ -30,7 +30,7 @@
       ciudad: "València",
       telefono: "960 000 000",
       whatsapp: "600 000 000",
-      email: "contacto@psicologiaadiccionescorts.es",
+      email: "psicologiacorts@gmail.com",
       horario: [
         { dias: "Lunes a jueves", horas: "9:30 – 14:00 y 16:00 – 20:30" },
         { dias: "Viernes", horas: "9:30 – 15:00" },
