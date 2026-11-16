@@ -287,7 +287,7 @@
               </div>
               <div className="pon-dest__panel tarjeta" key={dest.id}>
                 <p>{dest.texto}</p>
-                <h4>Temas habituales</h4>
+                <h3>Temas habituales</h3>
                 <ul className="lista-check">
                   {dest.temas.map((t, i) => <li key={i}>{t}</li>)}
                 </ul>
