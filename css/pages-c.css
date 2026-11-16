@@ -1,0 +1,313 @@
+/* =========================================================
+   Lote C — Contacto (.contacto-…) y Pedir cita (.cita-…)
+   Solo variables de base.css: funciona en tema claro y oscuro.
+   ========================================================= */
+
+[hidden] { display: none !important; }
+
+/* =========================================================
+   CONTACTO
+   ========================================================= */
+.contacto-hero__acciones { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+
+/* ---------- Tarjetas de datos ---------- */
+.contacto-dato { display: flex; flex-direction: column; }
+.contacto-dato h3 { font-size: 1.2rem; }
+.contacto-dato__texto { margin: 0 0 .5rem; font-style: normal; overflow-wrap: anywhere; }
+.contacto-dato__correo { font-size: .95rem; }
+.contacto-dato__nota { font-size: .88rem; margin: 0; }
+.contacto-dato a { font-weight: 600; }
+
+.contacto-copiar {
+  margin-left: .6rem; padding: .15rem .65rem; font-size: .78rem; font-weight: 600;
+  border-radius: var(--radio-pildora); border: 1.5px solid var(--color-borde);
+  background: var(--color-fondo-alt); color: var(--color-texto);
+  transition: background var(--transicion), color var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+.contacto-copiar:hover { border-color: var(--color-primario); color: var(--color-primario); transform: translateY(-1px); }
+.contacto-copiar--ok { background: var(--color-primario); border-color: var(--color-primario); color: var(--color-fondo); }
+.contacto-copiar--ok:hover { color: var(--color-fondo); }
+
+.contacto-estado {
+  display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .8rem;
+  font-size: .85rem; font-weight: 600; padding: .25rem .8rem; border-radius: var(--radio-pildora);
+  align-self: flex-start;
+}
+.contacto-estado__punto { width: .6rem; height: .6rem; border-radius: 50%; background: currentColor; }
+.contacto-estado--abierto { background: var(--color-primario-suave); color: var(--color-exito); }
+.contacto-estado--abierto .contacto-estado__punto { animation: contacto-latido 1.8s ease-in-out infinite; }
+.contacto-estado--cerrado { background: var(--color-acento-suave); color: var(--color-acento); }
+@keyframes contacto-latido {
+  0% { box-shadow: 0 0 0 0 currentColor; }
+  70% { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.contacto-horario li {
+  display: flex; flex-direction: column; gap: .1rem; padding: .55rem .7rem; margin-inline: -.7rem;
+  border-radius: var(--radio-peq); font-size: .92rem; position: relative;
+  transition: background var(--transicion);
+}
+.contacto-horario li span { color: var(--color-texto-suave); }
+.contacto-horario__hoy { background: var(--color-primario-suave); }
+.contacto-horario__hoy span { color: var(--color-texto); }
+.contacto-horario__marca {
+  position: absolute; right: .6rem; top: .55rem; font-style: normal; font-size: .72rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--color-primario);
+}
+
+/* ---------- Mapa y cómo llegar ---------- */
+.contacto-llegar { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(1.25rem, 3vw, 2.5rem); align-items: stretch; }
+.contacto-mapa {
+  border-radius: var(--radio); overflow: hidden; border: 1px solid var(--color-borde);
+  box-shadow: var(--sombra); min-height: 340px; background: var(--color-primario-suave);
+}
+.contacto-mapa iframe { display: block; width: 100%; height: 100%; min-height: 340px; border: 0; }
+.contacto-llegar__panel { align-self: center; }
+.contacto-pestanas { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.2rem 0 .9rem; }
+.contacto-pestana {
+  padding: .5rem 1.1rem; border-radius: var(--radio-pildora); border: 1.5px solid var(--color-borde);
+  background: var(--color-superficie); color: var(--color-texto); font-weight: 600; font-size: .92rem;
+  transition: background var(--transicion), color var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+.contacto-pestana:hover { border-color: var(--color-primario); transform: translateY(-2px); }
+.contacto-pestana--activa { background: var(--color-primario); border-color: var(--color-primario); color: var(--color-fondo); }
+.contacto-panel-transporte {
+  background: var(--color-superficie); border: 1px solid var(--color-borde); border-left: 4px solid var(--color-acento);
+  border-radius: var(--radio-peq); padding: 1rem 1.2rem; animation: contacto-aparece .4s ease both;
+}
+.contacto-panel-transporte p { margin: 0; }
+@keyframes contacto-aparece { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Consulta rápida ---------- */
+.contacto-consulta { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.contacto-urgencia {
+  margin-top: 1.5rem; padding: 1rem 1.2rem; border-radius: var(--radio-peq);
+  background: var(--color-acento-suave); border-left: 4px solid var(--color-acento); font-size: .95rem;
+}
+.contacto-urgencia a { font-weight: 700; }
+.contacto-consulta__form { padding: clamp(1.25rem, 3vw, 2.25rem); }
+.contacto-form .campo textarea { resize: vertical; min-height: 120px; }
+.campo select { appearance: auto; }
+
+.contacto-contador { display: flex; align-items: center; gap: .7rem; font-size: .8rem; color: var(--color-texto-suave); }
+.contacto-contador__barra {
+  flex: 1; height: 4px; border-radius: 4px; background: var(--color-borde); position: relative; overflow: hidden;
+}
+.contacto-contador__barra::after {
+  content: ""; position: absolute; inset: 0; background: var(--color-primario);
+  transform-origin: left; transform: scaleX(var(--uso, 0)); transition: transform .25s ease, background .25s ease;
+}
+.contacto-contador--excedido { color: var(--color-error); }
+.contacto-contador--excedido .contacto-contador__barra::after { background: var(--color-error); }
+
+.contacto-privacidad { margin-bottom: 1.1rem; }
+.contacto-check, .cita-check { display: flex; gap: .75rem; align-items: flex-start; font-size: .92rem; cursor: pointer; }
+.contacto-check input, .cita-check input {
+  flex-shrink: 0; width: 1.25rem; height: 1.25rem; margin-top: .2rem; accent-color: var(--color-primario);
+}
+.contacto-privacidad--error .contacto-check, .cita-privacidad--error .cita-check { color: var(--color-error); }
+.contacto-aviso { font-size: .85rem; }
+
+.contacto-confirmacion { text-align: left; animation: contacto-aparece .5s ease both; }
+.contacto-confirmacion:focus { outline: none; }
+.contacto-confirmacion__icono, .cita-final__icono {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 1.2rem;
+  background: var(--color-primario-suave); color: var(--color-exito); animation: cita-sello .6s cubic-bezier(.2, .9, .3, 1.4) both;
+}
+.contacto-confirmacion__acciones { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.4rem; }
+
+/* ---------- Redes ---------- */
+.contacto-red { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--color-texto); padding: 1.2rem 1.4rem; height: 100%; }
+.contacto-red:hover { color: var(--color-texto); }
+.contacto-red__inicial {
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--fuente-titulos); font-size: 1.4rem; font-weight: 600;
+  background: var(--color-primario); color: var(--color-fondo); transition: transform var(--transicion);
+}
+.contacto-red:hover .contacto-red__inicial { transform: rotate(-10deg) scale(1.08); }
+.contacto-red__texto { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; flex: 1; }
+.contacto-red__texto small { color: var(--color-texto-suave); overflow-wrap: anywhere; }
+.contacto-red__flecha { color: var(--color-primario); transition: transform var(--transicion); }
+.contacto-red:hover .contacto-red__flecha { transform: translateX(5px); }
+
+@media (max-width: 860px) {
+  .contacto-llegar, .contacto-consulta { grid-template-columns: minmax(0, 1fr); }
+  .contacto-mapa, .contacto-mapa iframe { min-height: 300px; }
+}
+
+/* =========================================================
+   PEDIR CITA
+   ========================================================= */
+.cita-seccion { padding-top: clamp(2rem, 5vw, 3.5rem); }
+.cita-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
+.cita-principal { min-width: 0; }
+.cita-asistente { padding: clamp(1.1rem, 3vw, 2.25rem); }
+
+/* ---------- Progreso ---------- */
+.cita-progreso { margin-bottom: 1.8rem; }
+.cita-progreso__barra { height: 6px; border-radius: 6px; background: var(--color-borde); overflow: hidden; margin-bottom: 1rem; }
+.cita-progreso__barra span {
+  display: block; height: 100%; border-radius: 6px; transform-origin: left; transform: scaleX(var(--avance, .25));
+  background: linear-gradient(90deg, var(--color-primario), var(--color-acento)); transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+.cita-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; list-style: none; }
+.cita-pasos__item {
+  display: flex; align-items: center; gap: .55rem; width: 100%; padding: .3rem; border: 0; background: none;
+  color: var(--color-texto-suave); font: inherit; font-size: .85rem; font-weight: 600; text-align: left; border-radius: var(--radio-peq);
+}
+button.cita-pasos__item:hover { color: var(--color-primario); }
+.cita-pasos__num {
+  width: 30px; height: 30px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%;
+  border: 2px solid var(--color-borde); font-size: .85rem; color: var(--color-texto-suave); background: var(--color-superficie);
+  transition: background var(--transicion), color var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+.cita-pasos__paso--actual .cita-pasos__item { color: var(--color-texto); }
+.cita-pasos__paso--actual .cita-pasos__num { border-color: var(--color-primario); color: var(--color-primario); transform: scale(1.1); }
+.cita-pasos__paso--hecho .cita-pasos__num { background: var(--color-primario); border-color: var(--color-primario); color: var(--color-fondo); }
+
+/* ---------- Paso ---------- */
+.cita-paso { animation: cita-entra .45s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes cita-entra { from { opacity: 0; transform: translateX(calc(var(--dir, 1) * 28px)); } to { opacity: 1; transform: none; } }
+.cita-paso__etiqueta { margin: 0 0 .3rem; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-acento); }
+.cita-titulo { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.2rem; }
+.cita-titulo:focus { outline: none; }
+.cita-campos { display: flex; flex-direction: column; gap: 1.4rem; }
+
+.cita-grupo { border: 0; margin: 0; padding: 0; min-width: 0; }
+.cita-grupo:focus { outline: none; }
+.cita-grupo legend { font-weight: 600; font-size: 1rem; padding: 0; margin-bottom: .7rem; }
+.cita-error { margin: .6rem 0 0; }
+.cita-ayuda { font-size: .82rem; }
+.cita-edad { max-width: 220px; margin-bottom: 0; }
+.cita-doble { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0 1rem; }
+
+/* ---------- Opciones tipo tarjeta (radio) ---------- */
+.cita-opciones { display: grid; gap: .8rem; }
+.cita-opciones--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.cita-opciones--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.cita-opciones--motivos { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.cita-opciones--prof { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+
+.cita-opcion { position: relative; display: block; cursor: pointer; }
+.cita-opcion__input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.cita-opcion__cuerpo {
+  display: flex; flex-direction: column; gap: .25rem; height: 100%; padding: 1rem 1.1rem;
+  background: var(--color-superficie); border: 2px solid var(--color-borde); border-radius: var(--radio-peq);
+  transition: transform var(--transicion), border-color var(--transicion), background var(--transicion), box-shadow var(--transicion);
+}
+.cita-opcion__cuerpo small { color: var(--color-texto-suave); font-size: .86rem; line-height: 1.4; }
+.cita-opcion__icono { color: var(--color-primario); margin-bottom: .2rem; }
+.cita-opcion:hover .cita-opcion__cuerpo { transform: translateY(-3px); border-color: var(--color-primario); box-shadow: var(--sombra); }
+.cita-opcion__input:focus-visible + .cita-opcion__cuerpo { outline: 3px solid var(--color-acento); outline-offset: 2px; }
+.cita-opcion__input:checked + .cita-opcion__cuerpo {
+  border-color: var(--color-primario); background: var(--color-primario-suave); box-shadow: 0 0 0 3px var(--color-primario-suave);
+}
+.cita-opcion--marcada .cita-opcion__icono { transform: scale(1.12); }
+.cita-opcion__icono { transition: transform var(--transicion); }
+.cita-opcion--compacta .cita-opcion__cuerpo { flex-direction: row; align-items: center; gap: .7rem; padding: .8rem 1rem; }
+.cita-opcion--compacta .cita-opcion__icono { margin: 0; flex-shrink: 0; }
+.cita-opcion--compacta strong { font-size: .95rem; line-height: 1.25; }
+.cita-opcion--prof .cita-opcion__cuerpo { align-items: center; text-align: center; padding: 1.1rem .9rem; }
+
+.cita-prof__foto {
+  width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: .4rem;
+  border: 3px solid var(--color-superficie); box-shadow: 0 0 0 2px var(--color-borde); background: var(--color-primario-suave);
+  transition: box-shadow var(--transicion), transform var(--transicion);
+}
+.cita-prof__foto--equipo { display: grid; place-items: center; color: var(--color-primario); }
+.cita-opcion__input:checked + .cita-opcion__cuerpo .cita-prof__foto { box-shadow: 0 0 0 3px var(--color-primario); }
+.cita-opcion:hover .cita-prof__foto { transform: scale(1.05); }
+
+/* ---------- Calendario ---------- */
+.cita-calendario { outline: none; }
+.cita-calendario__titulo h3 { margin-bottom: .2rem; }
+.cita-calendario__titulo p { font-size: .88rem; margin-bottom: 1rem; }
+.cita-calendario__cab, .cita-calendario__rejilla { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .35rem; }
+.cita-calendario__cab { margin-bottom: .35rem; text-align: center; font-size: .78rem; font-weight: 700; color: var(--color-texto-suave); letter-spacing: .08em; }
+.cita-dia {
+  position: relative; aspect-ratio: 1; min-height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: var(--radio-peq); border: 1.5px solid var(--color-borde); background: var(--color-superficie); color: var(--color-texto);
+  font-weight: 600; padding: 0; line-height: 1.1;
+  animation: cita-pop .4s ease backwards; animation-delay: calc(var(--i, 0) * 14ms);
+  transition: transform var(--transicion), background var(--transicion), border-color var(--transicion), color var(--transicion), box-shadow var(--transicion);
+}
+@keyframes cita-pop { from { opacity: 0; transform: scale(.8); } }
+.cita-dia__mes { font-size: .62rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--color-texto-suave); }
+.cita-dia:not(:disabled):hover { transform: translateY(-3px); border-color: var(--color-primario); box-shadow: var(--sombra); }
+.cita-dia:disabled { background: transparent; border-style: dashed; color: var(--color-texto-suave); opacity: .5; cursor: not-allowed; }
+.cita-dia--finde:disabled { background: var(--color-fondo-alt); border-style: solid; opacity: .45; }
+.cita-dia--hoy { border-color: var(--color-acento); }
+.cita-dia--hoy::after {
+  content: ""; position: absolute; bottom: 5px; width: 5px; height: 5px; border-radius: 50%; background: var(--color-acento);
+}
+.cita-dia--elegido, .cita-dia--elegido:not(:disabled):hover {
+  background: var(--color-primario); border-color: var(--color-primario); color: var(--color-fondo); transform: scale(1.06);
+}
+.cita-dia--elegido .cita-dia__mes { color: var(--color-fondo); }
+
+.cita-franjas { outline: none; animation: contacto-aparece .4s ease both; }
+.cita-franjas h3 { font-size: 1.15rem; margin-bottom: .8rem; }
+.cita-franjas-vacio { margin: 0; padding: 1rem; border: 1.5px dashed var(--color-borde); border-radius: var(--radio-peq); text-align: center; }
+.cita-franja { margin-bottom: 1rem; }
+.cita-franja__nombre { margin: 0 0 .4rem; font-size: .82rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--color-texto-suave); }
+.cita-horas { display: flex; flex-wrap: wrap; gap: .5rem; }
+.cita-hora {
+  padding: .55rem 1.1rem; border-radius: var(--radio-pildora); border: 1.5px solid var(--color-borde);
+  background: var(--color-superficie); color: var(--color-texto); font-weight: 600; font-size: .95rem;
+  transition: transform var(--transicion), background var(--transicion), color var(--transicion), border-color var(--transicion);
+}
+.cita-hora:not(:disabled):hover { border-color: var(--color-primario); transform: translateY(-2px); }
+.cita-hora--elegida, .cita-hora--elegida:not(:disabled):hover { background: var(--color-primario); border-color: var(--color-primario); color: var(--color-fondo); }
+.cita-hora--llena { text-decoration: line-through; opacity: .5; cursor: not-allowed; }
+.cita-hora__llena { font-size: .72rem; font-weight: 500; text-decoration: none; display: inline-block; }
+
+/* ---------- Pie del asistente ---------- */
+.cita-privacidad { margin-bottom: .2rem; }
+.cita-resumen-errores { margin: 1.2rem 0 0; color: var(--color-error); font-weight: 600; font-size: .92rem; }
+.cita-botones { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--color-borde); }
+.cita-simulacion { margin: 1rem 0 0; font-size: .82rem; }
+
+/* ---------- Lateral ---------- */
+.cita-lateral { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 1.2rem; }
+.cita-lateral__titulo { font-size: 1.2rem; margin-bottom: .8rem; }
+.cita-resumen { padding: 1.4rem; }
+.cita-resumen__lista { margin: 0; }
+.cita-resumen__fila { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 0; border-bottom: 1px dashed var(--color-borde); font-size: .9rem; }
+.cita-resumen__fila dt { color: var(--color-texto-suave); flex-shrink: 0; }
+.cita-resumen__fila dd { margin: 0; text-align: right; color: var(--color-texto-suave); overflow-wrap: anywhere; }
+.cita-resumen__fila--lleno dd { color: var(--color-texto); font-weight: 600; animation: cita-destello .6s ease; }
+@keyframes cita-destello { from { background: var(--color-acento-suave); } to { background: transparent; } }
+.cita-resumen__nota { margin: .9rem 0 0; font-size: .82rem; }
+.cita-urgencia { padding: 1.2rem 1.4rem; border-radius: var(--radio); background: var(--color-acento-suave); border: 1px solid var(--color-acento); font-size: .92rem; }
+.cita-urgencia p { margin: 0 0 .6rem; }
+.cita-urgencia a { font-weight: 700; }
+.cita-urgencia__nota { font-size: .8rem; color: var(--color-texto-suave); margin-bottom: 0 !important; }
+
+/* ---------- Pantalla final ---------- */
+.cita-final { padding: clamp(1.25rem, 3.5vw, 2.5rem); animation: cita-entra .5s ease both; }
+@keyframes cita-sello { from { opacity: 0; transform: scale(.4) rotate(-20deg); } to { opacity: 1; transform: none; } }
+.cita-final__aviso {
+  padding: 1rem 1.2rem; border-radius: var(--radio-peq); background: var(--color-acento-suave);
+  border-left: 4px solid var(--color-acento); font-size: .95rem;
+}
+.cita-final__lista { margin: 0 0 1.2rem; border: 1px solid var(--color-borde); border-radius: var(--radio-peq); overflow: hidden; }
+.cita-final__fila { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; padding: .7rem 1rem; border-bottom: 1px solid var(--color-borde); font-size: .95rem; }
+.cita-final__fila:last-child { border-bottom: 0; }
+.cita-final__fila:nth-child(even) { background: var(--color-fondo-alt); }
+.cita-final__fila dt { color: var(--color-texto-suave); font-weight: 600; }
+.cita-final__fila dd { margin: 0; overflow-wrap: anywhere; }
+.cita-final__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: 1.4rem; }
+
+@media (max-width: 960px) {
+  .cita-layout { grid-template-columns: 1fr; }
+  .cita-lateral { position: static; }
+}
+@media (max-width: 560px) {
+  .cita-pasos { grid-template-columns: repeat(4, auto); justify-content: space-between; }
+  .cita-pasos__nombre { display: none; }
+  .cita-pasos__paso--actual .cita-pasos__nombre { display: inline; }
+  .cita-pasos { grid-template-columns: none; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .cita-final__fila { grid-template-columns: 1fr; gap: .1rem; }
+  .cita-botones .btn { padding-inline: 1.1rem; }
+}
