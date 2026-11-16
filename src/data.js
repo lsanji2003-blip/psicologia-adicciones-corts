@@ -118,18 +118,14 @@
     /* Fotos libres de Unsplash (enlace directo, sin descarga) */
     fotos: {
       hero: img("photo-1573497491208-6b1acb260507", 1400),
-      /* Las tres primeras son recreaciones amuebladas (generadas con IA a partir de las fotos reales);
-         el resto, fotos reales del local en su estado actual. */
+      /* Todas son recreaciones del gabinete amueblado y decorado (generadas con IA). */
       gabinete: [
-        { src: "assets/gabinete/amueblada-sala-2.jpg", alt: "Sala de espera con sofá crema, butacas verdes, mesa baja y mostrador de recepción de madera al fondo", pie: "Sala de espera y recepción (recreación)" },
-        { src: "assets/gabinete/amueblada-ventanal.jpg", alt: "Dos butacas verdes junto al ventanal con estor translúcido y plantas", pie: "Rincón junto al ventanal (recreación)" },
-        { src: "assets/gabinete/amueblada-despacho-1.jpg", alt: "Despacho de terapia con dos butacas enfrentadas, mesa auxiliar, estantería y lámpara de pie", pie: "Despacho de terapia (recreación)" },
-        { src: "assets/gabinete/entrada.jpg", alt: "Puerta de entrada acristalada a pie de calle", pie: "Entrada a pie de calle (estado actual)" },
-        { src: "assets/gabinete/sala-5.jpg", alt: "Vista de la sala vacía hacia el ventanal", pie: "Sala principal (estado actual)" },
-        { src: "assets/gabinete/sala-7.jpg", alt: "Vista de la sala vacía hacia la zona de despachos", pie: "Zona de recepción (estado actual)" },
-        { src: "assets/gabinete/despacho-3.jpg", alt: "Despacho interior vacío con suelo de madera", pie: "Segundo despacho (estado actual)" },
-        { src: "assets/gabinete/aseo-1.jpg", alt: "Aseo amplio alicatado", pie: "Aseo (se adaptará como baño accesible)" },
-        { src: "assets/gabinete/fachada-2.jpg", alt: "Fachada del local con escaparate acristalado", pie: "Fachada, antes de la nueva rotulación" }
+        { src: "assets/gabinete/amueblada-sala-2.jpg", alt: "Sala de espera con sofá crema, butacas verdes, mesa baja y mostrador de recepción de madera al fondo", pie: "Sala de espera y recepción" },
+        { src: "assets/gabinete/amueblada-ventanal.jpg", alt: "Dos butacas verdes junto al ventanal con estor translúcido y plantas", pie: "Rincón junto al ventanal" },
+        { src: "assets/gabinete/amueblada-despacho-a.jpg", alt: "Despacho con mesa de madera, portátil, dos sillas verdes y crema para pacientes, estantería con libros y juegos y una planta", pie: "Despacho 1" },
+        { src: "assets/gabinete/amueblada-despacho-b.jpg", alt: "Despacho con luz cálida, mesa de madera, dos sillas para pacientes, lámpara de pie, estantería y butacas", pie: "Despacho 2" },
+        { src: "assets/gabinete/amueblada-despacho-1.jpg", alt: "Zona de terapia con dos butacas enfrentadas, mesa auxiliar, estantería y lámpara de pie", pie: "Zona de terapia" },
+        { src: "assets/gabinete/amueblada-aseo.jpg", alt: "Baño accesible con barras de apoyo junto al inodoro, lavabo suspendido de madera, espejo redondo iluminado y plantas", pie: "Baño accesible" }
       ],
       planos: {
         actual: { src: "assets/gabinete/plano-actual.jpg", alt: "Plano actual del local: una oficina diáfana, un despacho y un baño", pie: "Plano actual: oficina diáfana, un despacho y un baño" },

@@ -253,7 +253,7 @@
               <button type="button" onClick={() => window.dispatchEvent(new Event("corts:cookies"))}>Configurar cookies</button>
             </nav>
             <p><strong>Aviso:</strong> {SITE.aviso}</p>
-            <p>© {new Date().getFullYear()} {SITE.nombre} · Proyecto de máster · Fotos del local: anuncio inmobiliario (idealista); recreaciones amuebladas generadas con IA · Imágenes de ambiente: Unsplash</p>
+            <p>© {new Date().getFullYear()} {SITE.nombre} · Proyecto de máster · Imágenes del gabinete: recreaciones generadas con IA · Imágenes de ambiente: Unsplash</p>
           </div>
         </div>
       </footer>
