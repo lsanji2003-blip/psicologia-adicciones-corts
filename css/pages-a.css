@@ -130,7 +130,7 @@
 }
 .inicio-chip--1 { left: -1.5rem; top: 14%; }
 .inicio-chip--2 { right: -0.5rem; bottom: 2%; animation-delay: -3s; }
-.inicio-chip--2 .inicio-chip__icono { background: var(--color-acento-suave); color: var(--color-acento); }
+.inicio-chip--2 .inicio-chip__icono { background: var(--color-acento-suave); color: var(--color-acento-texto); }
 @keyframes inicio-flota {
   from { translate: 0 0; }
   to { translate: 0 -12px; }
@@ -239,7 +239,7 @@
 .inicio-miembro:hover .inicio-miembro__foto img { transform: scale(1.06); }
 .inicio-miembro__datos { display: block; padding: 1.1rem 1.2rem 1.3rem; }
 .inicio-miembro__datos strong { display: block; font-family: var(--fuente-titulos); font-size: 1.15rem; font-weight: 500; line-height: 1.25; }
-.inicio-miembro__datos small { display: block; color: var(--color-acento); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; margin: 0.25rem 0 0.5rem; }
+.inicio-miembro__datos small { display: block; color: var(--color-acento-texto); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; margin: 0.25rem 0 0.5rem; }
 .inicio-miembro__area { display: block; font-size: 0.88rem; line-height: 1.45; color: var(--color-texto-suave); }
 
 .inicio-seccion__pie { display: flex; justify-content: center; margin-top: 2.5rem; }
@@ -367,7 +367,7 @@
   font-size: 0.78rem; font-weight: 600; background: var(--color-superficie); color: var(--color-primario); box-shadow: var(--sombra);
 }
 .qs-ficha__cuerpo { display: flex; flex-direction: column; flex: 1; padding: 1.5rem 1.6rem 1.7rem; }
-.qs-ficha__trat { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-acento); margin: 0 0 0.3rem; }
+.qs-ficha__trat { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-acento-texto); margin: 0 0 0.3rem; }
 .qs-ficha__cuerpo h3 { font-size: 1.5rem; margin-bottom: 0.2em; }
 .qs-ficha__area { font-weight: 600; color: var(--color-primario); margin-bottom: 0.8rem; line-height: 1.4; }
 .qs-ficha__pildoras { margin-bottom: 1.2rem; }
@@ -520,7 +520,7 @@
   position: absolute; right: 1.2rem; top: 0.6rem; font-family: var(--fuente-titulos); font-size: 3.4rem; line-height: 1;
   color: var(--color-borde); transition: color var(--transicion), transform var(--transicion);
 }
-.gabinete-objetivo:hover .gabinete-objetivo__num { color: var(--color-acento); transform: scale(1.1); }
+.gabinete-objetivo:hover .gabinete-objetivo__num { color: var(--color-acento-texto); transform: scale(1.1); }
 .gabinete-objetivo__icono {
   display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 1rem; border-radius: 14px;
   background: var(--color-primario-suave); color: var(--color-primario);
@@ -563,7 +563,7 @@
   background: var(--color-acento-suave); border-left: 4px solid var(--color-acento); border-radius: 0 var(--radio-peq) var(--radio-peq) 0;
   color: var(--color-texto) !important; font-style: italic;
 }
-.gabinete-triangulo__ejemplo span { font-style: normal; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-acento); }
+.gabinete-triangulo__ejemplo span { font-style: normal; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-acento-texto); }
 
 .gabinete-cbt__porque h3 { font-size: 1.3rem; margin-top: 0; }
 .gabinete-cbt__porque p { color: var(--color-texto-suave); }

@@ -17,6 +17,7 @@
   --color-primario-suave: #dcebe6;
   --color-acento: #d98a5b;
   --color-acento-suave: #f7e3d4;
+  --color-acento-texto: #9c4d24; /* acento oscurecido para texto: contraste AA */
   --color-borde: #e2d9c8;
   --color-exito: #2f7d5b;
   --color-error: #b3402e;
@@ -50,6 +51,7 @@
   --color-primario-suave: #24403b;
   --color-acento: #e9a57b;
   --color-acento-suave: #3d2e25;
+  --color-acento-texto: #e9a57b;
   --color-borde: #2c4440;
   --sombra: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
   --sombra-fuerte: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
@@ -108,7 +110,7 @@ button { font: inherit; cursor: pointer; }
 .sobretitulo {
   display: inline-flex; align-items: center; gap: .6rem;
   font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--color-acento); margin-bottom: 1rem;
+  color: var(--color-acento-texto); margin-bottom: 1rem;
 }
 .sobretitulo::before { content: ""; width: 28px; height: 2px; background: currentColor; border-radius: 2px; }
 .titulo-seccion { max-width: 720px; margin-bottom: 2.5rem; }
@@ -150,7 +152,7 @@ button { font: inherit; cursor: pointer; }
   display: inline-block; padding: .3rem .8rem; border-radius: var(--radio-pildora);
   background: var(--color-primario-suave); color: var(--color-primario); font-size: .8rem; font-weight: 600;
 }
-.pildora--acento { background: var(--color-acento-suave); color: var(--color-acento); }
+.pildora--acento { background: var(--color-acento-suave); color: var(--color-acento-texto); }
 .pildoras { display: flex; flex-wrap: wrap; gap: .5rem; }
 
 .lista-check li { position: relative; padding-left: 1.9rem; margin-bottom: .6rem; }
@@ -284,3 +286,6 @@ button { font: inherit; cursor: pointer; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Auditoria: objetivos tactiles minimos */
+.trat-pildora-boton, .cont-orden__op, .contacto-copiar { min-height: 38px; display: inline-flex; align-items: center; }

@@ -36,7 +36,7 @@
 .contacto-estado__punto { width: .6rem; height: .6rem; border-radius: 50%; background: currentColor; }
 .contacto-estado--abierto { background: var(--color-primario-suave); color: var(--color-exito); }
 .contacto-estado--abierto .contacto-estado__punto { animation: contacto-latido 1.8s ease-in-out infinite; }
-.contacto-estado--cerrado { background: var(--color-acento-suave); color: var(--color-acento); }
+.contacto-estado--cerrado { background: var(--color-acento-suave); color: var(--color-acento-texto); }
 @keyframes contacto-latido {
   0% { box-shadow: 0 0 0 0 currentColor; }
   70% { box-shadow: 0 0 0 7px transparent; }
@@ -169,7 +169,7 @@ button.cita-pasos__item:hover { color: var(--color-primario); }
 /* ---------- Paso ---------- */
 .cita-paso { animation: cita-entra .45s cubic-bezier(.2, .7, .2, 1) both; }
 @keyframes cita-entra { from { opacity: 0; transform: translateX(calc(var(--dir, 1) * 28px)); } to { opacity: 1; transform: none; } }
-.cita-paso__etiqueta { margin: 0 0 .3rem; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-acento); }
+.cita-paso__etiqueta { margin: 0 0 .3rem; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-acento-texto); }
 .cita-titulo { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.2rem; }
 .cita-titulo:focus { outline: none; }
 .cita-campos { display: flex; flex-direction: column; gap: 1.4rem; }
