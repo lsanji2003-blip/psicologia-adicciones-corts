@@ -56,15 +56,15 @@
         tratamiento: "Psicóloga General Sanitaria",
         colegiada: "N.º col. CV-S0001",
         foto: "assets/equipo/laura-sampedro.jpg",
-        area: "Infantojuvenil, intervención familiar y drogodependencias",
-        resumen: "Especializada en población infantojuvenil e intervención familiar, con experiencia en drogodependencias. Acompaña a adolescentes y a sus familias cuando el consumo o las pantallas empiezan a ocupar demasiado espacio.",
+        area: "Infantojuvenil, intervención familiar y terapias contextuales",
+        resumen: "Especializada en población infantojuvenil e intervención familiar, con experiencia en drogodependencias. Integra las terapias contextuales (como la terapia de aceptación y compromiso) en su trabajo con adolescentes y familias cuando el consumo o las pantallas empiezan a ocupar demasiado espacio.",
         formacion: [
           "Grado en Psicología — Universidad de Córdoba",
           "Máster en Psicología General Sanitaria — Universidad Autónoma de Madrid",
           "Máster Universitario en Investigación, Tratamiento y Patologías Asociadas en Drogodependencias — Universitat de València",
           "Especialización en psicología infantojuvenil e intervención familiar"
         ],
-        especialidades: ["Adolescentes", "Familias", "Drogodependencias", "Patología dual"]
+        especialidades: ["Adolescentes", "Familias", "Terapias contextuales", "Drogodependencias", "Patología dual"]
       },
       {
         id: "laura-sanchez-beato",
@@ -118,15 +118,16 @@
     /* Fotos libres de Unsplash (enlace directo, sin descarga) */
     fotos: {
       hero: img("photo-1573497491208-6b1acb260507", 1400),
-      /* Fotos reales del local (estado actual, antes de la reforma) */
+      /* Las tres primeras son recreaciones amuebladas (generadas con IA a partir de las fotos reales);
+         el resto, fotos reales del local en su estado actual. */
       gabinete: [
-        { src: "assets/gabinete/sala-2.jpg", alt: "Sala principal diáfana con suelo de madera y luces empotradas", pie: "Sala principal, hoy diáfana" },
-        { src: "assets/gabinete/entrada.jpg", alt: "Puerta de entrada acristalada a pie de calle", pie: "Entrada a pie de calle" },
-        { src: "assets/gabinete/ventanal.jpg", alt: "Ventanal de suelo a techo con vistas a la calle", pie: "Ventanal: luz natural todo el día" },
-        { src: "assets/gabinete/sala-5.jpg", alt: "Vista de la sala hacia el ventanal", pie: "Futura sala de espera" },
-        { src: "assets/gabinete/sala-7.jpg", alt: "Vista de la sala hacia la zona de despachos", pie: "Zona de recepción y despachos" },
-        { src: "assets/gabinete/despacho-1.jpg", alt: "Despacho con ventana interior hacia la sala", pie: "Despacho con ventana interior" },
-        { src: "assets/gabinete/despacho-3.jpg", alt: "Despacho interior con suelo de madera", pie: "Despacho" },
+        { src: "assets/gabinete/amueblada-sala-2.jpg", alt: "Sala de espera con sofá crema, butacas verdes, mesa baja y mostrador de recepción de madera al fondo", pie: "Sala de espera y recepción (recreación)" },
+        { src: "assets/gabinete/amueblada-ventanal.jpg", alt: "Dos butacas verdes junto al ventanal con estor translúcido y plantas", pie: "Rincón junto al ventanal (recreación)" },
+        { src: "assets/gabinete/amueblada-despacho-1.jpg", alt: "Despacho de terapia con dos butacas enfrentadas, mesa auxiliar, estantería y lámpara de pie", pie: "Despacho de terapia (recreación)" },
+        { src: "assets/gabinete/entrada.jpg", alt: "Puerta de entrada acristalada a pie de calle", pie: "Entrada a pie de calle (estado actual)" },
+        { src: "assets/gabinete/sala-5.jpg", alt: "Vista de la sala vacía hacia el ventanal", pie: "Sala principal (estado actual)" },
+        { src: "assets/gabinete/sala-7.jpg", alt: "Vista de la sala vacía hacia la zona de despachos", pie: "Zona de recepción (estado actual)" },
+        { src: "assets/gabinete/despacho-3.jpg", alt: "Despacho interior vacío con suelo de madera", pie: "Segundo despacho (estado actual)" },
         { src: "assets/gabinete/aseo-1.jpg", alt: "Aseo amplio alicatado", pie: "Aseo (se adaptará como baño accesible)" },
         { src: "assets/gabinete/fachada-2.jpg", alt: "Fachada del local con escaparate acristalado", pie: "Fachada, antes de la nueva rotulación" }
       ],

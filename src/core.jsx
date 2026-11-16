@@ -246,8 +246,14 @@
         </div>
         <div className="pie__legal">
           <div className="contenedor">
+            <nav className="pie__legales" aria-label="Información legal">
+              <a href="#/aviso-legal">Aviso legal</a>
+              <a href="#/privacidad">Política de privacidad</a>
+              <a href="#/cookies">Política de cookies</a>
+              <button type="button" onClick={() => window.dispatchEvent(new Event("corts:cookies"))}>Configurar cookies</button>
+            </nav>
             <p><strong>Aviso:</strong> {SITE.aviso}</p>
-            <p>© {new Date().getFullYear()} {SITE.nombre} · Proyecto de máster · Fotos del local: anuncio inmobiliario (idealista) · Imágenes de ambiente: Unsplash</p>
+            <p>© {new Date().getFullYear()} {SITE.nombre} · Proyecto de máster · Fotos del local: anuncio inmobiliario (idealista); recreaciones amuebladas generadas con IA · Imágenes de ambiente: Unsplash</p>
           </div>
         </div>
       </footer>

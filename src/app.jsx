@@ -23,7 +23,7 @@
     }, [tema]);
 
     useEffect(() => {
-      const r = window.SITE.rutas.find((x) => x.id === ruta);
+      const r = window.SITE.rutas.concat(window.SITE.legales || []).find((x) => x.id === ruta);
       document.title = (r ? r.etiqueta + " · " : "") + window.SITE.nombre;
     }, [ruta]);
 
@@ -37,6 +37,7 @@
           <Pagina />
         </main>
         <Footer />
+        {window.UI.CookieBanner && <window.UI.CookieBanner />}
       </React.Fragment>
     );
   }
