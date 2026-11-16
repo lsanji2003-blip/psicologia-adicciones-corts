@@ -1,85 +1,95 @@
 (function () {
   const { useState, useEffect, useRef } = React;
   const { Reveal, Boton, TituloSeccion, BandaCita, Icono } = window.UI;
+  const HistoriaScroll = window.UI.HistoriaScroll;
   const SITE = window.SITE;
 
   /* ---------- Contenido propio de la página ---------- */
   const DATOS_CLAVE = [
-    { icono: "escudo", titulo: "Centro sanitario privado", texto: "Autorizado y con profesionales colegiados" },
-    { icono: "cerebro", titulo: "Enfoque cognitivo-conductual", texto: "Basado en la evidencia científica" },
-    { icono: "calendario", titulo: "Primera valoración gratuita", texto: "Sin compromiso y a tu ritmo" },
-    { icono: "chat", titulo: "Presencial y online", texto: "Elige cómo te resulta más cómodo" }
+    { icono: "escudo", titulo: "Centro sanitario privado", texto: "Profesionales colegiados con experiencia en adolescencia" },
+    { icono: "cerebro", titulo: "Enfoque cognitivo-conductual", texto: "Basado en la evidencia y adaptado a adolescentes" },
+    { icono: "calendario", titulo: "Primera valoración gratuita", texto: "Sin compromiso, para el adolescente y su familia" },
+    { icono: "chat", titulo: "Presencial y online", texto: "También atendemos a personas adultas" }
   ];
 
   const AREAS = [
     {
-      id: "alcohol", icono: "copa", titulo: "Alcohol",
-      texto: "Beber más de lo que querías, notar que cuesta parar o que el alcohol empieza a pasar factura en tu trabajo, tu salud o tu familia.",
-      puntos: ["Evaluación del patrón de consumo", "Estrategias para reducir o dejar de beber", "Prevención de recaídas desde el primer día"]
+      id: "pantallas", icono: "pantalla", titulo: "Videojuegos y pantallas",
+      texto: "Cuando las partidas se alargan, el móvil se lleva las horas de sueño o los videojuegos pasan por delante de los estudios, los amigos y la convivencia en casa. Los estudios recientes (Paterna et al., 2026) asocian el uso problemático de videojuegos en adolescentes con un rendimiento académico algo menor; el efecto es pequeño y es una asociación, no una causa.",
+      puntos: ["Distinguir entre uso, abuso y problema, sin alarmismo", "Pactos de uso, rutinas y alternativas de ocio", "Trabajo con el adolescente y con su familia"]
     },
     {
-      id: "cannabis", icono: "hoja", titulo: "Cannabis",
-      texto: "Cuando fumar o vapear cannabis deja de ser ocasional y afecta al ánimo, la motivación, los estudios o las relaciones.",
-      puntos: ["Análisis de para qué y cuándo consumes", "Manejo del malestar y del deseo de consumir", "Atención específica a jóvenes y adolescentes"]
-    },
-    {
-      id: "cocaina", icono: "cerebro", titulo: "Cocaína y otras sustancias",
-      texto: "Cocaína, anfetaminas, opioides, benzodiacepinas u otras sustancias: un espacio seguro para hablar de ello sin etiquetas.",
-      puntos: ["Evaluación individualizada y coordinación sanitaria si hace falta", "Control de estímulos y habilidades de afrontamiento", "Trabajo con las emociones que sostienen el consumo"]
-    },
-    {
-      id: "juego", icono: "dado", titulo: "Juego y apuestas",
-      texto: "Apuestas deportivas, casino online, tragaperras u otros juegos que generan deudas, mentiras o angustia.",
+      id: "juego", icono: "dado", titulo: "Apuestas y juego online",
+      texto: "Apuestas deportivas en el móvil, casinos online u otros juegos con dinero que generan deudas, mentiras o angustia. La evidencia sobre intervenciones eficaces en apuestas deportivas todavía es limitada (Snaychuk et al., 2026), por eso medimos la evolución y ajustamos el plan contigo.",
       puntos: ["Reestructuración de creencias sobre el azar", "Pautas para el control del dinero y de los accesos", "Acompañamiento a la familia"]
     },
     {
-      id: "pantallas", icono: "pantalla", titulo: "Videojuegos y pantallas",
-      texto: "Cuando el móvil, los videojuegos o las redes desplazan el sueño, los estudios, el ocio o la convivencia.",
-      puntos: ["Distinguir uso, abuso y adicción", "Pactos de uso y alternativas de ocio", "Trabajo conjunto con adolescentes y familias"]
+      id: "redes", icono: "chat", titulo: "Redes sociales",
+      texto: "Cuando cuesta soltar el móvil, se mira de madrugada o las redes dejan al adolescente más nervioso, triste o comparándose con los demás. El Observatorio Español de las Drogas y las Adicciones (2025) indica que el 15,3 % de los estudiantes de 14 a 18 años presenta un posible uso problemático de las redes sociales.",
+      puntos: ["Entender para qué usa las redes y qué le aportan", "Manejo de la ansiedad y del miedo a quedarse fuera", "Acuerdos familiares realistas sobre el móvil"]
     },
     {
-      id: "tabaco", icono: "objetivo", titulo: "Tabaco y vapeo",
-      texto: "Dejar de fumar o de vapear es posible con un plan personalizado y apoyo psicológico durante las primeras semanas.",
+      id: "cannabis", icono: "hoja", titulo: "Cannabis",
+      texto: "Cuando fumar o vapear cannabis con amigos deja de ser ocasional y se nota en el ánimo, la motivación, las notas o las relaciones.",
+      puntos: ["Análisis de para qué y cuándo consume", "Manejo del malestar y del deseo de consumir", "Atención específica a adolescentes y jóvenes, con la familia"]
+    },
+    {
+      id: "alcohol", icono: "copa", titulo: "Alcohol",
+      texto: "Consumo intensivo en botellones y fines de semana, o beber para desinhibirse o encajar en el grupo. También atendemos a personas adultas cuando beber empieza a pasar factura a su salud, su trabajo o su familia.",
+      puntos: ["Evaluación del patrón de consumo", "Estrategias para reducir o dejar de beber", "Prevención de recaídas desde el primer día"]
+    },
+    {
+      id: "tabaco", icono: "objetivo", titulo: "Vapeo y tabaco",
+      texto: "Vapear en el recreo, con los amigos o a escondidas, y notar que cuesta parar. Dejarlo es posible con un plan personalizado y apoyo psicológico durante las primeras semanas.",
       puntos: ["Preparación y fijación de la fecha de abandono", "Técnicas para el craving y las situaciones de riesgo", "Seguimiento para consolidar el cambio"]
     },
     {
+      id: "otras", icono: "cerebro", titulo: "Otras sustancias",
+      texto: "Cocaína, drogas de síntesis, benzodiacepinas u otras sustancias: un espacio seguro para hablar de ello sin etiquetas, tanto si el consumo es de un adolescente o joven como de una persona adulta.",
+      puntos: ["Evaluación individualizada y coordinación sanitaria si hace falta", "Control de estímulos y habilidades de afrontamiento", "Trabajo con las emociones que sostienen el consumo"]
+    },
+    {
       id: "familias", icono: "familia", titulo: "Familias",
-      texto: "Si convives con alguien que tiene un problema de adicción, tú también necesitas orientación y apoyo.",
-      puntos: ["Pautas de comunicación y límites (enfoque CRAFT)", "Cómo motivar al cambio sin confrontar", "Cuidar de ti mientras acompañas"]
+      texto: "Si eres madre o padre de un adolescente con un problema de adicción, tú también necesitas orientación y apoyo. No tienes la culpa, y tu papel puede marcar la diferencia.",
+      puntos: ["Pautas de comunicación y límites (enfoque CRAFT)", "Cómo motivar al cambio sin confrontar ni discutir", "Cuidar de ti mientras acompañas"]
     }
   ];
 
   const PASOS = [
-    { n: "01", titulo: "Primera valoración", texto: "Una conversación gratuita y sin compromiso para conocernos, escuchar tu situación y resolver tus dudas." },
-    { n: "02", titulo: "Evaluación y plan", texto: "Estudiamos tu caso con calma y te devolvemos un plan con objetivos claros y medibles, pactados contigo." },
-    { n: "03", titulo: "Intervención", texto: "Sesiones semanales con técnicas de eficacia probada, adaptadas a ti y, si quieres, a tu familia." },
-    { n: "04", titulo: "Prevención de recaídas", texto: "Preparamos las situaciones de riesgo y hacemos seguimiento para que lo logrado se mantenga." }
+    { n: "01", titulo: "Primera valoración", texto: "Una conversación gratuita y sin compromiso con la familia y, si quiere, con el adolescente, para escuchar la situación y resolver dudas." },
+    { n: "02", titulo: "Evaluación y plan", texto: "Estudiamos el caso con calma y os devolvemos un plan con objetivos claros y medibles, pactados con el adolescente y con vosotros." },
+    { n: "03", titulo: "Intervención con ambos", texto: "Sesiones con el adolescente y sesiones con madre, padre o tutores (pautas educativas, comunicación, CRAFT), con técnicas de eficacia probada." },
+    { n: "04", titulo: "Prevención de recaídas", texto: "Preparamos las situaciones de riesgo y hacemos seguimiento para que lo logrado se mantenga en casa, en el instituto y con los amigos." }
   ];
 
   const PREGUNTAS = [
     {
       p: "¿Qué pasa en la primera sesión?",
-      r: "Hablamos con calma de lo que te preocupa, te explicamos cómo trabajamos y, si encaja, acordamos juntos los siguientes pasos. Es gratuita, no te compromete a nada y nadie te va a juzgar."
+      r: "Hablamos con calma de lo que os preocupa, os explicamos cómo trabajamos y, si encaja, acordamos juntos los siguientes pasos. Es gratuita, no os compromete a nada y nadie va a juzgar ni al adolescente ni a la familia."
     },
     {
-      p: "¿Lo que cuento es confidencial?",
-      r: "Sí. Somos psicólogos generales sanitarios colegiados y estamos sujetos al secreto profesional y a la normativa de protección de datos. Nada de lo que hablamos sale de la consulta sin tu consentimiento, salvo las excepciones previstas por la ley."
+      p: "Mi hijo o hija no quiere venir, ¿qué hago?",
+      r: "Es muy habitual, y no hace falta que esté decidido a dejarlo para empezar. Podéis venir primero madre o padre: trabajamos pautas de comunicación basadas en la evidencia, como el enfoque CRAFT, que ayudan a mejorar la convivencia y a que el adolescente se acerque a pedir ayuda. Cuando viene, usamos la entrevista motivacional para trabajar sus dudas, sin sermones."
     },
     {
-      p: "¿Tengo que estar decidido a dejarlo para venir?",
-      r: "No. Muchas personas llegan con dudas y con sentimientos encontrados. Trabajar esa ambivalencia, con técnicas como la entrevista motivacional, es parte del tratamiento."
+      p: "¿Lo que cuenta mi hijo o hija es confidencial? ¿Hace falta mi consentimiento?",
+      r: "Estamos sujetos al secreto profesional y a la normativa de protección de datos. Con menores cuidamos la confianza del adolescente: lo que cuenta en sesión se trata con reserva, y acordamos con él o ella qué compartimos con la familia, salvo situaciones de riesgo para su salud o seguridad. En menores de 16 años hace falta el consentimiento de los progenitores o tutores para iniciar la atención."
+    },
+    {
+      p: "¿Participamos los padres en las sesiones?",
+      r: "Sí, de forma planificada. La intervención es doble: sesiones con el adolescente y sesiones con la familia, para acordar normas, mejorar la comunicación y aprender a acompañar. No siempre estaréis en la misma sesión, y no es para buscar culpables: la familia es una parte importante de la solución."
     },
     {
       p: "¿Cuánto dura un tratamiento?",
-      r: "Depende de cada persona, de la sustancia o conducta y de los objetivos. Después de la evaluación te damos una estimación orientativa y la vamos revisando contigo. No hay plazos ni resultados garantizados: cada proceso es distinto."
+      r: "Depende de cada adolescente, de la sustancia o conducta y de los objetivos. Después de la evaluación os damos una estimación orientativa y la vamos revisando con vosotros. No hay plazos ni resultados garantizados: cada proceso es distinto."
     },
     {
-      p: "¿Puedo acudir si quien tiene el problema es un familiar?",
-      r: "Claro. Atendemos a familias aunque la persona afectada todavía no quiera venir. Hay pautas basadas en la evidencia, como el enfoque CRAFT, que ayudan a mejorar la convivencia y a facilitar que pida ayuda."
+      p: "¿Atendéis también a personas adultas?",
+      r: "Sí. Nuestro trabajo se centra en adolescentes y sus familias, pero las personas adultas con un problema de adicción, con o sin sustancia, también pueden pedir cita. Hacemos la misma evaluación y un plan a su medida."
     },
     {
       p: "¿Hay sesiones online?",
-      r: "Sí. Ofrecemos atención presencial en el centro y también por videollamada, según lo que mejor te encaje y lo que recomiende el profesional en tu caso."
+      r: "Sí. Ofrecemos atención presencial en el centro y también por videollamada, según lo que mejor os encaje y lo que recomiende el profesional en cada caso."
     }
   ];
 
@@ -122,7 +132,7 @@
             <p className="sobretitulo inicio-ent" style={{ "--i": 0 }}>{SITE.tipoCentro} · València</p>
             <h1 className="inicio-portada__titulo inicio-ent" style={{ "--i": 1 }}>{SITE.lema}</h1>
             <p className="inicio-portada__lead inicio-ent" style={{ "--i": 2 }}>
-              En Corts te acompañamos, sin juicios y a tu ritmo, cuando el alcohol, otras sustancias, el juego o las pantallas han empezado a ocupar demasiado espacio en tu vida o en la de alguien a quien quieres.
+              En Corts acompañamos a adolescentes y a sus familias, sin juicios y a su ritmo, cuando los videojuegos, las apuestas online, las redes sociales o el consumo de sustancias empiezan a ocupar demasiado espacio. Si eres madre o padre y no sabes por dónde empezar, escríbenos. También atendemos a personas adultas.
             </p>
             <div className="inicio-portada__botones inicio-ent" style={{ "--i": 3 }}>
               <Boton a="#/pedir-cita">Pedir cita <Icono nombre="flecha" tam={18} /></Boton>
@@ -130,7 +140,7 @@
             </div>
             <ul className="inicio-portada__avales inicio-ent" style={{ "--i": 4 }}>
               <li><Icono nombre="check" tam={18} /> Primera valoración gratuita</li>
-              <li><Icono nombre="check" tam={18} /> Confidencialidad total</li>
+              <li><Icono nombre="check" tam={18} /> Confidencialidad cuidada</li>
               <li><Icono nombre="check" tam={18} /> Sin listas de espera</li>
             </ul>
           </div>
@@ -145,7 +155,7 @@
             </div>
             <div className="inicio-chip inicio-chip--2">
               <span className="inicio-chip__icono"><Icono nombre="escudo" tam={20} /></span>
-              <span><strong>Secreto profesional</strong><small>Tu historia está protegida</small></span>
+              <span><strong>Secreto profesional</strong><small>Su historia está protegida</small></span>
             </div>
           </div>
         </div>
@@ -184,8 +194,8 @@
         <div className="contenedor">
           <TituloSeccion
             sobretitulo="Áreas de ayuda"
-            titulo="¿En qué podemos ayudarte?"
-            texto="Elige un área para saber cómo trabajamos. Si no encuentras la tuya, escríbenos: lo importante es que des el primer paso."
+            titulo="¿En qué podemos ayudar a tu familia?"
+            texto="Elige un área para saber cómo trabajamos con adolescentes y con sus familias. También atendemos a personas adultas. Si no encuentras tu caso, escríbenos: lo importante es dar el primer paso."
           />
           <div className="inicio-areas">
             <div className="inicio-areas__lista" role="group" aria-label="Áreas de ayuda">
@@ -234,7 +244,7 @@
           <TituloSeccion
             sobretitulo="Cómo trabajamos"
             titulo="Un camino claro, en cuatro pasos"
-            texto="Sabrás en todo momento dónde estás y hacia dónde vamos. Los ritmos los marcas tú."
+            texto="Sabréis en todo momento dónde estáis y hacia dónde vamos. Los ritmos los marcáis vosotros."
           />
           <ol className="inicio-pasos">
             {PASOS.map((p, i) => (
@@ -294,7 +304,7 @@
         <div className="contenedor">
           <TituloSeccion
             sobretitulo="Contenidos"
-            titulo="Aprende y compartimos lo que sabemos"
+            titulo="Aprende con lo que compartimos"
             texto={c.intro}
           />
           <div className="rejilla rejilla--3">
@@ -332,8 +342,8 @@
           <div className="inicio-faq__intro">
             <TituloSeccion
               sobretitulo="Preguntas frecuentes"
-              titulo="Lo que muchas personas se preguntan antes de venir"
-              texto="Si te queda alguna duda, llámanos o escríbenos. Te respondemos sin compromiso."
+              titulo="Lo que suelen preguntarnos las familias antes de venir"
+              texto="Si os queda alguna duda, llamadnos o escribidnos. Os respondemos sin compromiso."
             />
             <Boton a="#/contacto" variante="secundario">Contactar</Boton>
           </div>
@@ -371,6 +381,7 @@
       <React.Fragment>
         <Portada />
         <Franja />
+        {HistoriaScroll && <HistoriaScroll />}
         <Areas />
         <Pasos />
         <Equipo />

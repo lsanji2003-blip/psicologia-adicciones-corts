@@ -119,8 +119,8 @@
         <div className="contenedor">
           <TituloSeccion
             sobretitulo="El gabinete"
-            titulo="Nuestro local, tal como es hoy"
-            texto="90 m² a pie de calle, con mucha luz natural y suelo de madera. Así está antes de la reforma. Pulsa cualquier foto para verla en grande."
+            titulo="Un espacio pensado para que te sientas en calma"
+            texto="90 m² a pie de calle, con mucha luz natural, madera y plantas. Las primeras imágenes recrean cómo quedará el gabinete amueblado; las demás muestran el local en su estado actual. Pulsa cualquiera para verla en grande."
           />
           <div className="gabinete-galeria">
             {fotos.map((f, i) => (
