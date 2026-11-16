@@ -158,6 +158,70 @@
     );
   }
 
+  /* ---------- Estrategia: objetivos, plataformas y medición (opcional, desde los datos) ---------- */
+  function Estrategia({ C }) {
+    const objetivos = Array.isArray(C.objetivos) ? C.objetivos : [];
+    const plataformas = Array.isArray(C.plataformas) ? C.plataformas : [];
+    const [activa, setActiva] = useState(0);
+    if (!objetivos.length && !plataformas.length) return null;
+    const p = plataformas[activa] || plataformas[0];
+
+    return (
+      <section className="seccion seccion--alt">
+        <div className="contenedor">
+          {objetivos.length > 0 && (
+            <React.Fragment>
+              <TituloSeccion
+                sobretitulo="Estrategia"
+                titulo="Para qué comunicamos"
+                texto="Tres objetivos de comunicación y cómo sabremos si los estamos cumpliendo."
+              />
+              <div className="rejilla rejilla--3 cont-objetivos">
+                {objetivos.map((o, i) => (
+                  <Reveal key={o.nombre} retraso={i * 100} className="tarjeta tarjeta--elevable cont-objetivo">
+                    <span className="cont-objetivo__num" aria-hidden="true">{"0" + (i + 1)}</span>
+                    <h3>{o.nombre}</h3>
+                    <p>{o.texto}</p>
+                    {o.medicion && (
+                      <p className="cont-objetivo__medicion texto-suave"><strong>Cómo lo medimos:</strong> {o.medicion}</p>
+                    )}
+                  </Reveal>
+                ))}
+              </div>
+            </React.Fragment>
+          )}
+
+          {plataformas.length > 0 && p && (
+            <Reveal className="cont-plataformas">
+              <h3 className="cont-plataformas__titulo">Un canal para cada público</h3>
+              <div className="cont-plataformas__tabs" role="tablist" aria-label="Plataformas del plan">
+                {plataformas.map((pl, i) => (
+                  <button key={pl.nombre} type="button" role="tab"
+                    id={"cont-plat-tab-" + i}
+                    aria-selected={i === activa}
+                    aria-controls="cont-plat-panel"
+                    className={"cont-chip" + (i === activa ? " cont-chip--activo" : "")}
+                    onClick={() => setActiva(i)}>
+                    {pl.nombre}
+                  </button>
+                ))}
+              </div>
+              <div className="tarjeta cont-plataformas__panel" role="tabpanel" id="cont-plat-panel"
+                aria-labelledby={"cont-plat-tab-" + activa} key={p.nombre}>
+                <dl>
+                  <div><dt>¿A quién se dirige?</dt><dd>{p.publico}</dd></div>
+                  <div><dt>¿Qué buscamos que hagan?</dt><dd>{p.accion}</dd></div>
+                  <div><dt>Sinergias con otros canales</dt><dd>{p.sinergias}</dd></div>
+                  <div><dt>¿Para qué sirve?</dt><dd>{p.objetivo}</dd></div>
+                </dl>
+              </div>
+            </Reveal>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   /* ---------- Página ---------- */
   function Contenidos() {
     const C = SITE.contenidos || {};
@@ -206,6 +270,8 @@
             {redes.length > 0 && <li><strong>{redes.length}</strong> {redes.length === 1 ? "canal" : "canales"}</li>}
           </ul>
         </PageHero>
+
+        <Estrategia C={C} />
 
         <section className="seccion">
           <div className="contenedor">
@@ -345,6 +411,15 @@
             onIr={(clave) => setAbierta(clave)}
           />,
           document.body
+        )}
+
+        {aLista(C.fuentes).length > 0 && (
+          <div className="contenedor cont-fuentes texto-suave">
+            <h2 className="cont-plataformas__titulo">Fuentes</h2>
+            <ul>
+              {aLista(C.fuentes).map((f) => <li key={f}>{f}</li>)}
+            </ul>
+          </div>
         )}
 
         <BandaCita />

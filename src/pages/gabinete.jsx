@@ -11,12 +11,26 @@
   ];
 
   const OBJETIVOS = [
-    { icono: "objetivo", titulo: "Evaluar con rigor", texto: "Conocer a fondo tu situación: qué consumes o qué haces, cómo, cuándo y para qué." },
-    { icono: "cerebro", titulo: "Tratar con eficacia", texto: "Aplicar intervenciones psicológicas con respaldo científico, adaptadas a cada persona." },
+    { icono: "objetivo", titulo: "Evaluar con rigor", texto: "Conocer a fondo cada caso: qué hace el adolescente, cuánto, cuándo y para qué, y qué factores de riesgo lo mantienen." },
+    { icono: "cerebro", titulo: "Tratar con eficacia", texto: "Aplicar intervenciones psicológicas con respaldo científico para reducir la conducta adictiva, adaptadas a cada persona." },
+    { icono: "familia", titulo: "Mejorar la convivencia familiar", texto: "Dar a madres y padres estrategias educativas y de comunicación para recuperar el respeto y la confianza en casa." },
     { icono: "escudo", titulo: "Prevenir recaídas", texto: "Anticipar las situaciones de riesgo y entrenar respuestas para mantener el cambio en el tiempo." },
-    { icono: "familia", titulo: "Acompañar a las familias", texto: "Dar pautas y apoyo a quienes conviven con el problema, porque también ellas necesitan cuidado." },
-    { icono: "grupo", titulo: "Prevenir en la comunidad", texto: "Llevar talleres y charlas a institutos, asociaciones y empresas para actuar antes de que haya un problema." },
-    { icono: "microfono", titulo: "Divulgar sin estigma", texto: "Compartir información fiable para derribar mitos y animar a pedir ayuda a tiempo." }
+    { icono: "grupo", titulo: "Prevenir en la comunidad", texto: "Colaborar con institutos para ofrecer talleres a adolescentes y a sus familias antes de que haya un problema." },
+    { icono: "microfono", titulo: "Divulgar sin alarmismo", texto: "Concienciar sobre las adicciones digitales con información fiable, sin culpar a las familias ni asustar." }
+  ];
+
+  /* Qué nos diferencia (fortalezas del análisis DAFO del gabinete) */
+  const DIFERENCIAL = [
+    { icono: "pantalla", titulo: "Especialización en adicciones digitales", texto: "Videojuegos, apuestas online y uso problemático de redes sociales: es lo que mejor conocemos y en lo que nos formamos." },
+    { icono: "familia", titulo: "Doble intervención", texto: "Trabajamos con el adolescente y con sus padres a la vez. Cambiar la conducta y mejorar el clima de casa van de la mano." },
+    { icono: "objetivo", titulo: "Evaluación dirigida", texto: "Exploramos factores de riesgo conocidos, como la impulsividad, la búsqueda de sensaciones y las distorsiones cognitivas, para ajustar el tratamiento." },
+    { icono: "libro", titulo: "Enfoque basado en la evidencia", texto: "Elegimos las técnicas por su respaldo científico y revisamos contigo los avances con objetivos medibles." }
+  ];
+
+  /* Datos de contexto citados en el plan del gabinete (OEDA, 2025) */
+  const CONTEXTO = [
+    { cifra: "15,3 %", texto: "de los estudiantes de 14 a 18 años presenta un posible uso problemático de las redes sociales." },
+    { cifra: "43,5 %", texto: "de 2.167 intervenciones con jóvenes se relacionó con un mal uso de la tecnología." }
   ];
 
   const TRIANGULO = [
@@ -247,8 +261,38 @@
         <PageHero
           sobretitulo="El centro"
           titulo="Un gabinete cálido, privado y cercano"
-          texto="Un centro sanitario privado en el barrio de Les Corts Valencianes, pensado para que pedir ayuda sea un paso tranquilo."
+          texto="Un centro sanitario privado en València, especializado en adicciones digitales en adolescentes y en el acompañamiento a sus familias."
         />
+
+        <section className="seccion">
+          <div className="contenedor">
+            <TituloSeccion
+              sobretitulo="Nuestra especialización"
+              titulo="Adolescentes, pantallas y familias"
+              texto="Nos dedicamos a los problemas con los videojuegos, las apuestas online y las redes sociales en adolescentes, y trabajamos siempre también con sus madres y padres."
+            />
+            <div className="rejilla rejilla--4">
+              {DIFERENCIAL.map((d, i) => (
+                <Reveal key={d.titulo} retraso={i * 90} className="tarjeta tarjeta--elevable">
+                  <div className="tarjeta__icono"><Icono nombre={d.icono} /></div>
+                  <h3>{d.titulo}</h3>
+                  <p className="texto-suave">{d.texto}</p>
+                </Reveal>
+              ))}
+            </div>
+            <div className="gabinete-contexto">
+              {CONTEXTO.map((c, i) => (
+                <Reveal key={c.cifra} retraso={i * 120} className="gabinete-contexto__dato">
+                  <strong>{c.cifra}</strong>
+                  <span>{c.texto}</span>
+                </Reveal>
+              ))}
+              <p className="gabinete-contexto__fuente texto-suave">
+                Fuente: Observatorio Español de las Drogas y las Adicciones (2025). Informe sobre adicciones comportamentales y otros trastornos adictivos 2025. Ministerio de Sanidad.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <Galeria />
 
