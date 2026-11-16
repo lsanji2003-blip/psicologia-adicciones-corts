@@ -45,14 +45,14 @@
 
   /* ---------- Componentes ---------- */
   /* Aparece con animación al hacer scroll. retraso en ms. */
-  function Reveal({ children, retraso = 0, como = "div", className = "", ...resto }) {
+  function Reveal({ children, retraso = 0, como = "div", className = "", style, ...resto }) {
     const [ref, visible] = useEnPantalla();
     const Etiqueta = como;
     return (
       <Etiqueta
         ref={ref}
         className={"reveal " + (visible ? "reveal--visible " : "") + className}
-        style={{ "--retraso": retraso + "ms" }}
+        style={Object.assign({ "--retraso": retraso + "ms" }, style || {})}
         {...resto}
       >
         {children}
