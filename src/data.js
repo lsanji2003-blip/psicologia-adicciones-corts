@@ -1,5 +1,6 @@
 /* Datos globales del sitio (SIMULADOS con fines académicos).
-   Cambia aquí cualquier dato y se actualiza en toda la web. */
+   Cambia aquí cualquier dato y se actualiza en toda la web.
+   Última actualización: 17/11/2026 (correo de contacto). */
 (function () {
   var img = function (id, w) {
     return "https://images.unsplash.com/" + id + "?auto=format&fit=crop&w=" + (w || 1200) + "&q=75";
